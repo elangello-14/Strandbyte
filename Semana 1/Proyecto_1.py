@@ -1,8 +1,3 @@
-# Input de Secuencia
-secuencia = input("Escribe la secuencia de ADN: ")
-
-secuencia = secuencia.upper()
-
 # Funciones
 def longitud_secuencia(cadena):
     longitud = len(cadena)
@@ -20,9 +15,12 @@ T: {T}
 C: {C}
 G: {G}'''
 
-# Resultado
-print(f"Longitud: {longitud_secuencia(secuencia)}")
-print(conteo_secuencia(secuencia))
-
+# Inputs y resultados
+if __name__ == "__main__":
+    secuencia = input("Escribe la secuencia de ADN: ")
+    secuencia = secuencia.upper()
+    
+    print(f"Longitud: {longitud_secuencia(secuencia)}")
+    print(conteo_secuencia(secuencia))
 
 
