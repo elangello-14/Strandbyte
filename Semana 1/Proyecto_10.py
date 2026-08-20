@@ -52,7 +52,7 @@ if __name__ == "__main__":
                     elif menu_opcion == 4:
                         print(f"Cadena complementaria inversa: {p4.cadena_complementaria_inversa(secuencia)}")
                     
-                    else:
-                        print("Secuencia de ADN incorrecta")
+                else:
+                    print("Secuencia de ADN incorrecta")
             elif menu_opcion == 5: break
             else: print("Opción inválida")

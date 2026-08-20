@@ -9,13 +9,12 @@ def base_mas_frecuente(cadena):
 # Interacción Sistema <-> Usuario
 chars_aceptados = {'A','T','G','C'}
 
-
 # Inputs y resultados
 if __name__ == "__main__":
     while True:
         secuencia = input("Escribe la secuencia de ADN: ")
         secuencia = secuencia.upper()
-        if chars_aceptados != set(secuencia):
+        if set(secuencia).issubset(chars_aceptados) == False:
             print("Secuencia de ADN incorrecta")
         else: break
     

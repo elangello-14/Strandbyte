@@ -1,3 +1,3 @@
-import Proyecto_10
+import Proyecto_8
 
 print("Buenas tardes")
