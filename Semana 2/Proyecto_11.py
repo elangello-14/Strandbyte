@@ -7,10 +7,12 @@ datos = [
     
 ]
 
+secuencia_actual = 0
+
+secuencias = []
+
 for linea in lineas:
     if linea.startswith(">"):
-        secuencia_actual = 0
-        secuencia_actual += 1
         
         nombre = linea.split(" ")[0].removeprefix(">")
         
@@ -19,13 +21,19 @@ for linea in lineas:
         
         insertar = {
             "nombre": nombre,
-            "descripcion": descripcion
+            "descripcion": descripcion,
+            "secuencia": ""
             }
         
         datos.append(insertar)
         
+        secuencia_actual += 1
+        
     else:
-        print(linea.split(" "))
-        while secuencia_actual
-
-print(datos)
+        secuencias.append(linea.split(" "))
+        
+        for i in range(0, len(secuencias)):
+            secuencia_actual = datos[-1]
+            secuencia_actual["secuencia"].join(secuencias[i])
+    
+print(secuencias)
