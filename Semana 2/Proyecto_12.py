@@ -1,21 +1,19 @@
 import sys
-sys.path.append("C:\\Users\\usuario\\Documents\\Python - Mini proyectos de bioinformática\\Semana 1")
+sys.path.append("Semana 1")
 import Proyecto_6 as p6
 
-#Funcionalidades
 codificacion = {
     "ATG": "M",
     "GCC": "A",
     "CTG": "L",
 }
 
-proteina = []
-
 # Inputs y resultados
 if __name__ == "__main__":
     while True:
         secuencia_adn = input("Escribe la secuencia de ADN: ")
         secuencia_adn = secuencia_adn.upper()
+        proteina = []
 
         if p6.validar_secuencia(secuencia_adn):
             if len(secuencia_adn) % 3 != 0:
