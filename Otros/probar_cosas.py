@@ -1,16 +1,11 @@
-datos = []  # lista vacía
+numeros = [1,2,3,4,5,6,7,8,9]
 
-# Simulamos leer una cabecera
-datos.append({"nombre": "seq_1", "descripcion": "Insulina", "secuencia": ""})
+# Números impares
+impares = filter(lambda num: num % 2 != 0, numeros)
 
-# Ahora "apuntamos" al último diccionario
-secuencia_actual = datos[-1]
+# Al cuadrado
+cuadrado = map(lambda num: num**2, numeros)
 
-# Simulamos leer una línea de ADN
-secuencia_actual["secuencia"] += "ATGGCC"
-
-# Simulamos leer otra línea de ADN
-secuencia_actual["secuencia"] += "CTGTGG"
-
-print(datos)
+print(list(impares))
+print(list(cuadrado))
 

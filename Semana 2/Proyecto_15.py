@@ -7,7 +7,8 @@ from collections import Counter
 # Funcionalidades
 def kmer_mas_frecuente(cadena):
     kmers_a_contar = p14.mostrar_kmers(cadena).split(" ")
-    kmer_mas_frecuente = max(Counter(kmers_a_contar), key=cadena.count)
+    contador = Counter(kmers_a_contar)
+    kmer_mas_frecuente = max(contador, key=lambda k: contador[k])
     return f"El kmer más frecuente es: {kmer_mas_frecuente} --> {kmers_a_contar.count(kmer_mas_frecuente)}"
 
 # Inputs y resultados
