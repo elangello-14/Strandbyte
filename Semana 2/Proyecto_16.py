@@ -22,10 +22,13 @@ import sys
 sys.path.append("Semana 1")
 import Proyecto_6 as p6
 
-def posicion_nucleotido(cadena):
-    nucleotidos = cadena.split(" ")
-    for indice, n in enumerate(nucleotidos):
-        return f"Posición {indice+1} --> {n}"
+def posicion_nucleotido(cadena_1, cadena_2):
+    nucleotidos_1 = [cadena_1[i] for i in range(0, len(cadena_1))]
+    nucleotidos_2 = [cadena_2[i] for i in range(0, len(cadena_2))]
+    if nucleotidos_1 != nucleotidos_2:
+        return f"Posición : {nucleotidos_1} →{nucleotidos_2}"
+    else:
+        return "No se han encontrado posiciones diferentes"
 
 if __name__ == "__main__":
     while True:
@@ -36,8 +39,7 @@ if __name__ == "__main__":
             if len(sec_1) != len(sec_2):
                 print("Ambas cadenas deben tener la misma longitud")
             else:
-                print(posicion_nucleotido(sec_1))
-                print(posicion_nucleotido(sec_2))
+                print(posicion_nucleotido(sec_1, sec_2))
                 break
         else:
             print("Secuencia de ADN incorrecta")
