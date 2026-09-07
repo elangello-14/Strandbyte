@@ -1,6 +1,6 @@
 import sys
 sys.path.append("Semana 1")
-import Proyecto_6 as p6
+import Proyecto_6 as p6 # type: ignore
 
 def comparar_secuencias(cadena_1, cadena_2):
     mutaciones = []

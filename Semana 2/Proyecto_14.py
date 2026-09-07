@@ -1,6 +1,6 @@
 import sys
 sys.path.append("Semana 1")
-import Proyecto_6 as p6
+import Proyecto_6 as p6 # type: ignore
 
 
 def mostrar_kmers(cadena):
