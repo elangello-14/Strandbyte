@@ -6,9 +6,10 @@ def analizar_secuencia(cadena):
     longitud = len(cadena)
     longitudes.append(longitud)
     gc = ((cadena.count("G") + cadena.count("C")))
+    gcs.append(gc)
     at = ((cadena.count("A") + cadena.count("T")))
-    # # secuencia_larga = max(secuencias, key=secuencia.len)
-    # secuencia_mayor_gc = max(secuencias, key=secuencia.count("G"))
+    secuencia_larga = max(secuencias, key=len)
+    secuencia_mayor_gc = max(secuencias, key=secuencia.count)
     # longitud_media = round(sum(longitudes) / len(longitudes))
     # secuencia_menor_gc = min(secuencias, key=secuencia.count("G"))
     # secuencia_corta = min(secuencias, key=len(secuencia))
@@ -19,26 +20,36 @@ def analizar_secuencia(cadena):
         "longitud": longitud,
         "GC": gc,
         "AT": at,
-        # # "secuencia_larga": secuencia_larga,
-        # "secuencia_mayor_gc": secuencia_mayor_gc,
+        "secuencia_larga": secuencia_larga,
+        "secuencia_mayor_gc": secuencia_mayor_gc,
         # "longitud_media": f"{longitud_media} nucleótidos",
         # "secuencia_menor_gc": secuencia_menor_gc,
         # "secuencia_corta": secuencia_corta
     }
 
-    body_informe = f'''
---------------------------------
+    body_informe = f'''--------------------------------
 Secuencia: {datos["secuencia"]}
 Longitud: {datos["longitud"]}
 GC: {datos["GC"]}
 AT: {datos["AT"]}
+
+--------------------------------
+Secuencia más larga: {datos["secuencia_larga"]}
+Secuencia con más GC: {datos["secuencia_mayor_gc"]}
 '''
+
+# Longitud media:{datos["longitud_media"]}
+
+# --------------------------------
+# Secuencia más corta: {datos["secuencia_corta"]}
+# Secuencia con menos GC:{datos["secuencia_menor_gc"]}
     return body_informe
 
 
 if __name__ == "__main__":
     secuencias = []
     longitudes = []
+    gcs = []
 
     while True:
         secuencia_adn = input("Introduce secuencias de ADN para hacer un informe\nEscribe 'continuar' para obtener el informe: ").upper()
@@ -47,9 +58,10 @@ if __name__ == "__main__":
             secuencias.append(secuencia_adn)
             print("\nSecuencia añadida!")
         elif secuencia_adn == "CONTINUAR":
-            for secuencia in secuencias:
+            for indice, secuencia in enumerate(secuencias):
+                print(f"\n///////// INFORME nº {indice + 1} /////////")
                 print(analizar_secuencia(secuencia))
-                
+            break
         
         
         
