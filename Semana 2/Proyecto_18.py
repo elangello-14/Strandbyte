@@ -26,7 +26,9 @@ if __name__ == "__main__":
                             print("\n----------------------------------------------")
                             print(f"Secuencia de referencia: {secuencia_referencia}")
                             print(f"Muestra {i+1}: {secuencia}")
-                            p16.comparar_secuencias(secuencia_referencia, secuencia)
+                            print(f'\n---> Cantidad de mutaciones: {(p16.comparar_secuencias(secuencia_referencia, secuencia)["cantidad_mutaciones"])}')
+                            print(f'\n---> Mutaciones:\n{"\n".join(p16.comparar_secuencias(secuencia_referencia, secuencia)["mutaciones"])}')
+                            print(f'\n---> Identidad: {(p16.comparar_secuencias(secuencia_referencia, secuencia)["identidad"])}')
                             print("----------------------------------------------\n")
                             
                     break
