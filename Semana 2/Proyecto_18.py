@@ -22,15 +22,20 @@ if __name__ == "__main__":
                     if not secuencias_de_muestra:
                         print("Debes introducir al menos una secuencia de muestra")
                     else:
+                        resultados = []
+
                         for i, secuencia in enumerate(secuencias_de_muestra):
-                            print("\n----------------------------------------------")
-                            print(f"Secuencia de referencia: {secuencia_referencia}")
-                            print(f"Muestra {i+1}: {secuencia}")
-                            print(f'\n---> Cantidad de mutaciones: {(p16.comparar_secuencias(secuencia_referencia, secuencia)["cantidad_mutaciones"])}')
-                            print(f'\n---> Mutaciones:\n{"\n".join(p16.comparar_secuencias(secuencia_referencia, secuencia)["mutaciones"])}')
-                            print(f'\n---> Identidad: {(p16.comparar_secuencias(secuencia_referencia, secuencia)["identidad"])}')
-                            print("----------------------------------------------\n")
-                            
+                            resultado = p16.comparar_secuencias(secuencia_referencia, secuencias_de_muestra)
+                            resultados.append(resultado)
+                            print(resultados)
+                            # print("\n----------------------------------------------")
+                            # print(f"Secuencia de referencia: {secuencia_referencia}")
+                            # print(f"Muestra {i+1}: {secuencia}")
+                            # print(f'\n---> Cantidad de mutaciones: {resultado["cantidad_mutaciones"]}')
+                            # print(f'\n---> Mutaciones:\n{" ".join(resultado["mutaciones"])}')
+                            # print(f'\n---> Identidad: {resultado["identidad"]}')
+                            # print(f'\n---> Secuencia con más mutaciones: {max(resultados, key=lambda x: resultado[x])}')
+                            # print("----------------------------------------------\n")
                     break
                 
                 else:
