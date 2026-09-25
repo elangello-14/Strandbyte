@@ -1,5 +1,5 @@
 import sys
-sys.path.append("Semana 1")
+sys.path.append("Fase 1")
 import Proyecto_6 as p6 # type: ignore
 
 def comparar_secuencias(cadena_1, cadena_2):
@@ -17,7 +17,8 @@ def comparar_secuencias(cadena_1, cadena_2):
     datos = {
         "mutaciones": mutaciones,
         "cantidad_mutaciones": len(mutaciones),
-        "identidad": f"{round((identidad * 100)/len(cadena_1), 2)}%"
+        "identidad": f"{round((identidad * 100)/len(cadena_1), 2)}%",
+        "cadena": cadena_2
         }
     
     return datos

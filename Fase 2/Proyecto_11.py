@@ -1,6 +1,6 @@
 from pathlib import Path
 
-archivo = Path("Semana 2\\secuencias.fasta")
+archivo = Path("Fase 2\\secuencias.fasta")
 lineas = archivo.read_text().splitlines()
 
 datos = [

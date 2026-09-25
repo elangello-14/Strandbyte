@@ -1,5 +1,5 @@
 import sys
-sys.path.append("Semana 1")
+sys.path.append("Fase 1")
 import Proyecto_6 as p6 # type: ignore
 import Proyecto_16 as p16
 
@@ -25,17 +25,18 @@ if __name__ == "__main__":
                         resultados = []
 
                         for i, secuencia in enumerate(secuencias_de_muestra):
-                            resultado = p16.comparar_secuencias(secuencia_referencia, secuencias_de_muestra)
+                            
+                            resultado = p16.comparar_secuencias(secuencia_referencia, secuencia)
                             resultados.append(resultado)
-                            print(resultados)
-                            # print("\n----------------------------------------------")
-                            # print(f"Secuencia de referencia: {secuencia_referencia}")
-                            # print(f"Muestra {i+1}: {secuencia}")
-                            # print(f'\n---> Cantidad de mutaciones: {resultado["cantidad_mutaciones"]}')
-                            # print(f'\n---> Mutaciones:\n{" ".join(resultado["mutaciones"])}')
-                            # print(f'\n---> Identidad: {resultado["identidad"]}')
-                            # print(f'\n---> Secuencia con más mutaciones: {max(resultados, key=lambda x: resultado[x])}')
-                            # print("----------------------------------------------\n")
+                            secuencia_mas_mutaciones = max(resultados, key= lambda resultado: resultado["cantidad_mutaciones"])
+                            print("\n----------------------------------------------")
+                            print(f"Secuencia de referencia: {secuencia_referencia}")
+                            print(f"Muestra {i+1}: {secuencia}")
+                            print(f'\n---> Cantidad de mutaciones: {resultado["cantidad_mutaciones"]}')
+                            print(f'\n---> Mutaciones:\n{" ".join(resultado["mutaciones"])}')
+                            print(f'\n---> Identidad: {resultado["identidad"]}')
+                            print(f'\n---> Secuencia con más mutaciones: {secuencia_mas_mutaciones["cadena"]}')
+                            print("----------------------------------------------\n")
                     break
                 
                 else:
