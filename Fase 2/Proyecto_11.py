@@ -1,40 +1,44 @@
 from pathlib import Path
 
-archivo = Path("Fase 2\\secuencias.fasta")
-lineas = archivo.read_text().splitlines()
-
-datos = [
+# ---- LEER ARCHIVO FASTA ----
+def leer_fasta(archivo):
+    lineas = archivo.read_text().splitlines()
     
-]
+    datos = [
+    
+    ]
+    
+    for linea in lineas:
+        if linea.startswith(">"):
+            nombre = linea.split(" ")[0].removeprefix(">")
 
-secuencias = []
+            descripcion = linea.split(" ")[1:200]
+            descripcion = " ".join(descripcion)
 
-for linea in lineas:
-    if linea.startswith(">"):
-        nombre = linea.split(" ")[0].removeprefix(">")
+            insertar = {
+                "nombre": nombre,
+                "descripcion": descripcion,
+                "secuencia": "",
+                "longitud": ""
+                }
+
+            datos.append(insertar)
+
+        else:
+            secuencia = datos[-1]
+            secuencia["secuencia"] += linea
+            secuencia["longitud"] = f"{len(linea)} pb"
         
-        descripcion = linea.split(" ")[1:200]
-        descripcion = " ".join(descripcion)
-        
-        insertar = {
-            "nombre": nombre,
-            "descripcion": descripcion,
-            "secuencia": "",
-            "longitud": ""
-            }
-        
-        datos.append(insertar)
+    return datos
 
-    else:
-        secuencia = datos[-1]
-        secuencia["secuencia"] += linea
-        secuencia["longitud"] = f"{len(linea)} pb"
-
+# ------- RESULTADOS ---------
 if __name__ == "__main__":
-    for i in range(len(datos)):
+    resultado = leer_fasta(Path("Fase 2\\secuencias.fasta"))
+    for i in range(len(resultado)):
+        
         print(f'''
-Nombre: {datos[i]["nombre"]}
-Descripción: {datos[i]["descripcion"]}
-Secuencia: {datos[i]["secuencia"]}
-Longitud: {datos[i]["longitud"]}
+Nombre: {resultado[i]["nombre"]}
+Descripción: {resultado[i]["descripcion"]}
+Secuencia: {resultado[i]["secuencia"]}
+Longitud: {resultado[i]["longitud"]}
 ''')
