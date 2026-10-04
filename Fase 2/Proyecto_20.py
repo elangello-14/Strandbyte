@@ -1,14 +1,14 @@
-import sys
 from collections import Counter
 from pathlib import Path
 import Proyecto_11 as p11
 
 # ------ ANALIZAR NUCLEÓTIDOS ------
-nucleotidos_globales = []
-
-def analizar_nucleotidos(secuencia):
+def analizar_nucleotidos(secuencia, secuencia_global):
     contador = Counter(secuencia)
+    contador_global = Counter(secuencia_global)
+
     formula = 100 / len(secuencia)
+    formula_global = 100 / len(secuencia_global)
 
     porcentaje = {
         'A': round(contador["A"] * formula, 2),
@@ -17,21 +17,23 @@ def analizar_nucleotidos(secuencia):
         'C': round(contador["C"] * formula, 2)
     }
 
-    return contador,porcentaje
-
-
-def analizar_nucleotidos_globales(secuencia_global):
-    contador = Counter(secuencia_global)
-    formula = 100 / len(secuencia_global)
-
     porcentaje_global = {
-        'A': round(contador["A"] * formula, 2),
-        'T': round(contador["T"] * formula, 2),
-        'G': round(contador["G"] * formula, 2),
-        'C': round(contador["C"] * formula, 2)
+        'A': round(contador_global["A"] * formula_global, 2),
+        'T': round(contador_global["T"] * formula_global, 2),
+        'G': round(contador_global["G"] * formula_global, 2),
+        'C': round(contador_global["C"] * formula_global, 2)
     }
 
-    return contador, porcentaje_global
+    datos = {
+        "contador": contador,
+        "contador_global": contador_global,
+        "A": (porcentaje["A"], porcentaje_global["A"]),
+        "T": (porcentaje["T"], porcentaje_global["T"]),
+        "G": (porcentaje["G"], porcentaje_global["G"]),
+        "C": (porcentaje["C"], porcentaje_global["C"])
+    }
+
+    return datos
 
 # ------ RESULTADOS -------
 if __name__ == "__main__":
@@ -43,35 +45,36 @@ if __name__ == "__main__":
         print("La ruta no es válida")
     
     else:
-        secuencias_globales = []
-        for i in range (len(fasta)):
-            secuencia = fasta[i]["secuencia"]
-            secuencias_globales.append(secuencia)
-            secuencia_global = ("").join(secuencias_globales)
+        contenido = Path(archivo).read_text()
+        if not contenido: print("El archivo está vacío")
 
-            # ---- Resultado individual ----
-            analisis = analizar_nucleotidos(secuencia)
-            print(f'''
+        else:
+            secuencias_globales = []
+            for i in range (len(fasta)):
+                secuencia = fasta[i]["secuencia"]
+                secuencias_globales.append(secuencia)
+                secuencia_global = ("").join(secuencias_globales)
+
+                # ---- Resultado individual ----
+                analisis = analizar_nucleotidos(secuencia, secuencia_global)
+                print(f'''
 ======= ANÁLISIS ========
 Secuencia: {secuencia}
 
-A --> {analisis[0]["A"]} ({analisis[1]["A"]}%)
-T --> {analisis[0]["T"]} ({analisis[1]["T"]}%)
-G --> {analisis[0]["G"]} ({analisis[1]["G"]}%)
-C --> {analisis[0]["C"]} ({analisis[1]["C"]}%)
+A --> {analisis["contador"]["A"]} ({analisis["A"][0]}%)
+T --> {analisis["contador"]["T"]} ({analisis["T"][0]}%)
+G --> {analisis["contador"]["G"]} ({analisis["G"][0]}%)
+C --> {analisis["contador"]["C"]} ({analisis["C"][0]}%)
 ==========================
-            ''')
+                ''')
 
-        # ---- Resultado global -----
-        analisis_global = analizar_nucleotidos_globales(secuencia_global)
-        print(f'''
+            # ---- Resultado global -----
+            print(f'''
 ======= ANÁLISIS GLOBAL ========
-Secuencia: {secuencia}
-
-A --> {analisis_global[0]["A"]} ({analisis_global[1]["A"]}%)
-T --> {analisis_global[0]["T"]} ({analisis_global[1]["T"]}%)
-G --> {analisis_global[0]["G"]} ({analisis_global[1]["G"]}%)
-C --> {analisis_global[0]["C"]} ({analisis_global[1]["C"]}%)
+Secuencia: {secuencia_global}
+A --> {analisis["contador_global"]["A"]} ({analisis["A"][1]}%)
+T --> {analisis["contador_global"]["T"]} ({analisis["T"][1]}%)
+G --> {analisis["contador_global"]["G"]} ({analisis["G"][1]}%)
+C --> {analisis["contador_global"]["C"]} ({analisis["C"][1]}%)
 =================================
-        ''')
-
+            ''')
