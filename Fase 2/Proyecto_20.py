@@ -7,7 +7,8 @@ def analizar_nucleotidos(secuencia, secuencia_global):
     contador = Counter(secuencia)
     contador_global = Counter(secuencia_global)
 
-    if not secuencia or not secuencia_global: pass
+    if not secuencia or not secuencia_global:
+        return None
     else:
         formula = 100 / len(secuencia)
         formula_global = 100 / len(secuencia_global)
@@ -62,7 +63,7 @@ if __name__ == "__main__":
                 secuencia_global = ("").join(secuencias_globales)
                 analisis = analizar_nucleotidos(secuencia, secuencia_global)
 
-                if secuencia and secuencias_globales:
+                if secuencia:
                     print(f'''
 ======= ANÁLISIS ========
 Secuencia: {secuencia}
@@ -74,7 +75,11 @@ C --> {analisis["contador"]["C"]} ({analisis["C"][0]}%)
 ==========================
                 ''')
 
-        # ---- Resultado global -----
+                else: 
+                    print("No se han encontrado secuencias para analizar")
+                    break
+
+            if secuencia_global:
                     print(f'''
 ======= ANÁLISIS GLOBAL ========
 Secuencia: {secuencia_global}
@@ -84,6 +89,5 @@ G --> {analisis["contador_global"]["G"]} ({analisis["G"][1]}%)
 C --> {analisis["contador_global"]["C"]} ({analisis["C"][1]}%)
 =================================
             ''')
-                else: 
-                    print("No se han encontrado secuencias para analizar")
-                    break
+            else: 
+                print("No se ha encontrado la secuencia global")
