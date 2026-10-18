@@ -51,14 +51,15 @@ El repositorio está en aprendizaje activo. El código prioriza la práctica y l
 
 ## Próximos pasos
 
-- [ ] Añadir pruebas automatizadas para las funciones principales.
-- [ ] Unificar el manejo de rutas e importaciones entre fases.
-- [ ] Añadir una licencia adecuada antes de aceptar contribuciones.
+- [x] Añadir pruebas automatizadas para las funciones principales.
+- [x] Unificar el manejo de rutas e importaciones entre fases.
+- [x] Añadir una licencia adecuada antes de aceptar contribuciones.
 - [ ] Documentar cada ejercicio con ejemplos de entrada y salida.
 
 ## Licencia
 
-Aún no se ha seleccionado una licencia. Hasta que se añada una, el contenido se publica con todos los derechos reservados por defecto.
+Este proyecto está licenciado bajo los términos de la [MIT License](LICENSE).
+Hasta que se añada una licencia, el contenido se publica con todos los derechos reservados por defecto.
 
 ---
 
