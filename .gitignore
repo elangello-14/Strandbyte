@@ -24,3 +24,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Otros
+commits_guia.txt
